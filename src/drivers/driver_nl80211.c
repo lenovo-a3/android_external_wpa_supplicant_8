@@ -2599,6 +2599,10 @@ static int wpa_driver_nl80211_set_key(const char *ifname, struct i802_bss *bss,
 	    !is_broadcast_ether_addr(addr))
 		return ret;
 
+#ifdef MTK_MT6589
+	return ret;
+#endif
+
 	msg = nl80211_ifindex_msg(drv, ifindex, 0, NL80211_CMD_SET_KEY);
 	if (!msg ||
 	    nla_put_u8(msg, NL80211_ATTR_KEY_IDX, key_idx) ||
