@@ -28,9 +28,11 @@ L_CFLAGS += -DANDROID_LOG_NAME=\"hostapd\"
 L_CFLAGS += -Wno-unused-parameter
 
 # Set Android extended P2P functionality
+ifneq ($(BOARD_HOSTAPD_PRIVATE_LIB),lib_driver_cmd_mtk)
 L_CFLAGS += -DANDROID_P2P
 ifeq ($(BOARD_HOSTAPD_PRIVATE_LIB),)
 L_CFLAGS += -DANDROID_P2P_STUB
+endif
 endif
 
 # Use Android specific directory for control interface sockets
