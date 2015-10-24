@@ -26,7 +26,9 @@ L_CFLAGS += -DANDROID_LOG_NAME=\"wpa_supplicant\"
 L_CFLAGS += -Wno-unused-parameter
 
 # Set Android extended P2P functionality
+ifneq ($(BOARD_WPA_SUPPLICANT_PRIVATE_LIB),lib_driver_cmd_mtk)
 L_CFLAGS += -DANDROID_P2P
+endif
 
 ifeq ($(BOARD_WPA_SUPPLICANT_PRIVATE_LIB),)
 L_CFLAGS += -DANDROID_LIB_STUB
